@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ChefHat, CreditCard, ShoppingCart, Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -16,7 +15,6 @@ const Order = () => {
     name: "",
     phone: "",
     email: "",
-    address: "",
     cardNumber: "",
     expiryDate: "",
     cvv: "",
@@ -89,7 +87,6 @@ const Order = () => {
       name: "",
       phone: "",
       email: "",
-      address: "",
       cardNumber: "",
       expiryDate: "",
       cvv: "",
@@ -241,16 +238,6 @@ const Order = () => {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="address">Adresse de livraison *</Label>
-                    <Textarea 
-                      id="address"
-                      value={formData.address}
-                      onChange={(e) => setFormData({...formData, address: e.target.value})}
-                      required
                     />
                   </div>
 
