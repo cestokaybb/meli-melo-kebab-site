@@ -41,24 +41,29 @@ const MobileNavigation = () => {
   }, [api, location.pathname, navigate]);
 
   return (
-    <div className="md:hidden min-h-screen">
-      <Carousel setApi={setApi} className="w-full">
-        <CarouselContent>
+    <div className="md:hidden min-h-screen bg-white">
+      <Carousel setApi={setApi} className="w-full h-full">
+        <CarouselContent className="h-full">
           {pages.map((page, index) => (
-            <CarouselItem key={page.path}>
-              <page.component />
+            <CarouselItem key={page.path} className="h-full">
+              <div className="h-full overflow-y-auto">
+                <page.component />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
 
       {/* Navigation Indicators */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-black/70 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-3">
-          <ChevronLeft 
-            className="text-white w-5 h-5 opacity-60" 
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-3 flex items-center space-x-4 shadow-lg border border-gray-200">
+          <button
             onClick={() => api?.scrollPrev()}
-          />
+            className="p-1.5 rounded-full hover:bg-gray-100 transition-colors duration-200 disabled:opacity-40"
+            disabled={current === 0}
+          >
+            <ChevronLeft className="text-gray-600 w-4 h-4" />
+          </button>
           
           <div className="flex space-x-2">
             {pages.map((_, index) => (
@@ -67,22 +72,25 @@ const MobileNavigation = () => {
                 onClick={() => api?.scrollTo(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === current 
-                    ? "bg-yellow-400 scale-125" 
-                    : "bg-white/50 hover:bg-white/75"
+                    ? "bg-red-600 scale-125 shadow-sm" 
+                    : "bg-gray-300 hover:bg-gray-400"
                 }`}
               />
             ))}
           </div>
 
-          <ChevronRight 
-            className="text-white w-5 h-5 opacity-60"
+          <button
             onClick={() => api?.scrollNext()}
-          />
+            className="p-1.5 rounded-full hover:bg-gray-100 transition-colors duration-200 disabled:opacity-40"
+            disabled={current === pages.length - 1}
+          >
+            <ChevronRight className="text-gray-600 w-4 h-4" />
+          </button>
         </div>
 
         {/* Page Name Indicator */}
         <div className="text-center mt-2">
-          <span className="text-white text-sm font-medium bg-black/50 px-3 py-1 rounded-full">
+          <span className="text-gray-700 text-sm font-medium bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-200 shadow-sm">
             {pages[current]?.name}
           </span>
         </div>
