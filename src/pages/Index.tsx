@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,8 +9,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-red-50">
-      {/* Header Navigation */}
-      <nav className="bg-red-800 shadow-lg sticky top-0 z-50">
+      {/* Header Navigation - Hidden on mobile */}
+      <nav className="bg-red-800 shadow-lg sticky top-0 z-50 hidden md:block">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
@@ -32,6 +31,17 @@ const Index = () => {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Header - Only visible on mobile */}
+      <div className="md:hidden bg-red-800 shadow-lg sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 text-center">
+          <div className="flex items-center justify-center space-x-2">
+            <ChefHat className="text-yellow-400 w-8 h-8" />
+            <h1 className="text-2xl font-bold text-white">Meli Melo</h1>
+          </div>
+          <p className="text-yellow-400 text-sm mt-1">Glissez pour naviguer →</p>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section className="relative h-96 bg-gradient-to-r from-red-800 to-orange-600 flex items-center justify-center overflow-hidden">

@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChefHat } from "lucide-react";
@@ -40,8 +39,8 @@ const Menu = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-red-50">
-      {/* Header Navigation */}
-      <nav className="bg-red-800 shadow-lg sticky top-0 z-50">
+      {/* Header Navigation - Hidden on mobile */}
+      <nav className="bg-red-800 shadow-lg sticky top-0 z-50 hidden md:block">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <Link to="/" className="flex items-center space-x-2">
@@ -62,6 +61,17 @@ const Menu = () => {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Header - Only visible on mobile */}
+      <div className="md:hidden bg-red-800 shadow-lg sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 text-center">
+          <div className="flex items-center justify-center space-x-2">
+            <ChefHat className="text-yellow-400 w-8 h-8" />
+            <h1 className="text-2xl font-bold text-white">Menu</h1>
+          </div>
+          <p className="text-yellow-400 text-sm mt-1">Glissez pour naviguer →</p>
+        </div>
+      </div>
 
       {/* Header */}
       <section className="bg-gradient-to-r from-red-800 to-orange-600 text-white py-16">
